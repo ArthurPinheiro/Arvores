@@ -119,4 +119,31 @@ public class Arvore{
             }
         }
     }
+
+    public void posOrdem(){
+        if(!isEmpty()){
+            if(this.direita != null){
+                this.direita.posOrdem();
+            }
+            if(this.esquerda != null){
+                this.esquerda.posOrdem();
+            }
+
+            System.out.print(this.elemento.getValor() + " ");
+        }
+    }
+
+    public void inOrdemInvertido(){
+        if(!isEmpty()){
+            if(this.direita != null){
+                this.direita.inOrdemInvertido();
+            }
+
+            System.out.print(this.elemento.getValor() + " ");
+
+            if(this.esquerda != null){
+                this.esquerda.inOrdemInvertido();
+            }
+        }
+    }
 }

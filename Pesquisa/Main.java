@@ -20,6 +20,12 @@ public class Main{
 
        arvore.inOrdem();
        System.out.println(" ");
+
+       arvore.posOrdem();
+       System.out.println(" ");
+
+       arvore.inOrdemInvertido();
+       System.out.println(" ");
     }
 }
 
