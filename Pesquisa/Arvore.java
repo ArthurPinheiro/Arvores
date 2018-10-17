@@ -69,7 +69,50 @@ public class Arvore{
                 }
             }
         }  
-    } 
+    }
+    
+    public Arvore remover(Elemento elem){
+         //primeiro elemento 
+        if(this.elemento.getValor() == elem.getValor()){
+
+            if(this.direita == null && this.esquerda == null){
+                return null;
+            }
+            else{
+                // Filhos a esquerda, mas não tem a direita.
+                if(this.esquerda != null && this.direita == null){
+                    return this.esquerda;
+                }
+                // Filhos a direita, mas não tem a esquerda.
+                else if(this.direita != null && this.esquerda == null){
+                    return this.direita;
+                }
+                else{
+                    Arvore aux = this.esquerda;
+                    while(aux.direita != null){ // enquanto houver filhos a direita
+                        aux = aux.direita;
+                    }
+                    //troca os elementos da arvore
+                    this.elem = aux.getElemento(); // o nó atual recebe o elemento do aux
+                                                   // o maior dentre os menores 
+                    aux.setElemento(elem);         // insiro o nó folha, o elemento a ser eliminado
+                    this.esquerda = esquerda.remover(elem);
+                }
+            }
+
+        } 
+        else if(elem.getValor() < this.elemento.getValor()){
+            //sub arvore da esquerda
+            this.esquerda = this.esquerda.remover(elem);
+        }
+        else if(elem.getValor() > this.elemento.getValor()){
+            //sub arvore da direita
+            this.direita = this.direita.remover(elem);
+        }
+
+        return this;
+
+    }
 
     public boolean busca(int valor){
         if(isEmpty()){
